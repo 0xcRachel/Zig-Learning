@@ -1,4 +1,4 @@
-// while and for looping array
+// while and lopping array
 
 const std = @import("std");
 
