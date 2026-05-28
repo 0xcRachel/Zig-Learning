@@ -1,24 +1,33 @@
 const std = @import("std");
 
-const Player = struct {
-    name: []const u8,
-    hp: u32,
-    mana: u32,
-    saitama: u32,
-    gold: u32,
-};
+const PlayerMaster = struct { name: []const u8, hp: u32, mana: u32, saitama: u32, gold: u32, admin: []const u8 };
+
+const PlayerNormal = struct { name: []const u8, hp: u32, mana: u32, saitama: u32, gold: u32 };
 
 pub fn main() !void {
-    const player = Player{
+    const PlayerAdmin = PlayerMaster{
         .name = "0xcRachel",
-        .hp = 1,
-        .mana = 1,
-        .saitama = 1,
-        .gold = 0,
+        .hp = 9999,
+        .mana = 9999,
+        .saitama = 9999,
+        .gold = 9999,
+        .admin = "ADMIN MASTER OF CONTROL",
+    };
+
+    const PlayerNoN = PlayerNormal{
+        .name = "Mob Player",
+        .hp = 100,
+        .mana = 100,
+        .saitama = 100,
+        .gold = 100,
     };
 
     std.debug.print(
-        "{s}, Hp : {d}, Mana : {d}, Saitama : {d}, gold : {d}\n",
-        .{ player.name, player.hp, player.mana, player.saitama, player.gold },
+        "{s}, hp : {d}, mana : {d}, saitama : {d}, gold : {d} , admin : {s}\n",
+        .{ PlayerAdmin.name, PlayerAdmin.hp, PlayerAdmin.mana, PlayerAdmin.saitama, PlayerAdmin.gold, PlayerAdmin.admin },
+    );
+    std.debug.print(
+        "{s}, hp : {d}, mana : {d}, saitama : {d}, gold : {d}\n",
+        .{ PlayerNoN.name, PlayerNoN.hp, PlayerNoN.mana, PlayerNoN.saitama, PlayerNoN.gold },
     );
 }
